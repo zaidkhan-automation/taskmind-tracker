@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: taskmind-tracker
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start.sh
+    healthCheckPath: /healthz
+    envVars:
+      - key: DB_NAME
+        value: taskmind_db
+      - key: DB_USER
+        value: zaidkhan
+      - key: DB_PASS
+        sync: false   # set in Render dashboard
+      - key: DB_HOST
+        value: localhost
+      - key: DB_PORT
+        value: "5432"
